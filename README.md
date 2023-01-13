@@ -43,3 +43,4 @@ $return = $apar->require_userdata($name, $token);
 $return = $apar->require_recyclingAccessToken($name, $token);
 ```
 此步可以重置掉用户的 ```userAccessToken``` 确保信息的安全，如果调用成功返回 ```{"Status": "OK"}``` ***（注意此步只是调用成功，而不是信息正确，内部的response_id为1才算彻底成功）***
+**感谢您的使用！**
