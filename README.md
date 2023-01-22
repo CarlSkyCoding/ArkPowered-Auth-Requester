@@ -12,7 +12,7 @@ require("{$_SERVER['DOCUMENT_ROOT']}/{ToolPath}/apar_main.php");
 十分不建议您更改程序名称，后续添加其他功能时可能会导致程序错误
 
 ## 工具的使用
-```APAR``` 使用对象化规范，所以在使用工具之前，**您需要检查设置是否完成，您应当检查 ```apar_main.php``` 的头部 ```$List``` 变量信息是否填写完整** ，如果填写完整，您可以使用以下代码初始化 APAR_Checker（APAR 配置检查工具）：
+```APAR``` 使用了对象化编程，您可以不用担心先前项目的代码冲突问题，所以在使用工具之前，**您需要检查设置是否完成，您应当检查 ```apar_main.php``` 的头部 ```$List``` 变量信息是否填写完整** ，如果填写完整，您可以使用以下代码初始化 APAR_Checker（APAR 配置检查工具）：
 ```
 $apar_check = new apar_Checker();
 $apar_check->check_Setting();
