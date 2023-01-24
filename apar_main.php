@@ -1,7 +1,8 @@
 <?php
 // 方块盒子Auth接入工具 ArkPowered-Auth-Requester
-// Alpha v0.0.1
-// 23w01a
+// Release v1.0.1
+// 23w03a
+// Update Release 00003 on 2023/1/24
 
 
 // 您的accessID_v3信息
@@ -52,6 +53,7 @@ class apar_Checker extends Basic_Function
 
 class apar_Main extends Basic_Function
 {
+    // goto 验证页面
     public function goto_authorize()
     {
         global $List;
@@ -89,6 +91,7 @@ class apar_Main extends Basic_Function
         return $output;
     }
 
+    // 请求用户信息
     public function require_userdata($name, $token)
     {
         global $List;
@@ -197,6 +200,30 @@ class apar_Main extends Basic_Function
                 "Status" => "Offline",
                 "msg" => "Auth Server Down"
             );
+        }
+        return $output;
+    }
+
+    // 返回一个非json信息，如果信息正确返回userVerifyToken（注意保护用户隐私），如果错误返回NO（纯String，建议使用Basic->f_get返回）
+    public function getUserStatus_noJson($name, $token)
+    {
+        $basic = new Basic_Function();
+
+        $auth_status = $basic->f_get("https://auth.arkpowered.cn");
+
+        if ($auth_status) {
+            if ($auth_status["Status"] == "OK") {
+                $return = $basic->f_get("https://auth.arkpowered.cn/api/account/arkpowered?method=login&username={$name}&token={$token}");
+                if ($return != "NO") {
+                    $output = $return;
+                } else {
+                    $output = "NO";
+                }
+            } else {
+                $output = "NO";
+            }
+        } else {
+            $output = "NO";
         }
         return $output;
     }
