@@ -43,4 +43,11 @@ $return = $apar->require_userdata($name, $token);
 $return = $apar->require_recyclingAccessToken($name, $token);
 ```
 此步可以重置掉用户的 ```userAccessToken``` 确保信息的安全，如果调用成功返回 ```{"Status": "OK"}``` ***（注意此步只是调用成功，而不是信息正确，内部的response_id为1才算彻底成功）***
+
+#### 4.返回非Json信息，验证用户：
+此步可以在您不方便使用Json解析工具的情况下验证用户的情况（快速，无需解析）：
+```
+$return = $apar->getUserStatus_noJson($name, $password);
+```
+此步可以获取用户输入的账户密码是否正确（方块盒子 Account）正确会返回： ```userVerifyToken```
 **感谢您的使用！**
